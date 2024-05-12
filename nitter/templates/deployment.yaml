@@ -60,7 +60,7 @@ spec:
         - name: data
         {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ include .Values.persistence.existingClaim }}
+            claimName: storage-{{ include "nitter.fullname" . }}
         {{- else }}
           emptyDir: {}
         {{- end }}
