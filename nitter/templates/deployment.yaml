@@ -55,9 +55,7 @@ spec:
             - name: config
               mountPath: "/src/nitter.conf"
               readOnly: true
-            {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
       volumes:
         - name: data
         {{- if .Values.persistence.enabled }}
@@ -65,11 +63,10 @@ spec:
             claimName: {{ include .Values.persistence.existingClaim }}
         {{- else }}
           emptyDir: {}
+        {{- end }}
         - name: config
           configMap:
             name: {{ include "nitter.fullname" . }}-config-file
-        {{- end }}
-        {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
