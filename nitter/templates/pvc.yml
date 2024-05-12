@@ -1,0 +1,17 @@
+{{- if and .Values.persistence.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "nitter.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    {{- include "nitter.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ .Values.persistence.storageClass | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.size | quote }}
+  csi:
+    volumeAttributes:
+      subDir: {{ .Values.persistence.subDir | quote }}
+{{- end -}}

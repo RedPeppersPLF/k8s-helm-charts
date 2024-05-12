@@ -1,0 +1,11 @@
+Congratulations! The application is up and running successfully.
+
+Here are a few things to keep in mind:
+
+1. Access the application by visiting the following URL:
+
+2. Make sure all the required dependencies are installed and configured properly.
+
+3. Monitor the application logs for any errors or warnings.
+
+4. If you encounter any issues, refer to the application's documentation or seek assistance from the development team.
