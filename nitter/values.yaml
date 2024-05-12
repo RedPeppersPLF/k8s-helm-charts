@@ -74,6 +74,7 @@ autoscaling:
 
 persistence:
   enabled: true
+  accessMode: ReadWriteOnce
   size: 4Gi
   storageClass: smb
   subDir: nitter
