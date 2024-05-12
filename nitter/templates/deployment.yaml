@@ -51,9 +51,6 @@ spec:
             - name: data
               mountPath: "/src"
               readOnly: {{ .readOnly | default false | quote }}
-            - name: config
-              mountPath: "/src/nitter.conf"
-              readOnly: true
           {{- end }}
       volumes:
         - name: data
@@ -66,6 +63,10 @@ spec:
         - name: config
           configMap:
             name: {{ include "nitter.fullname" . }}-config-file
+            items: 
+            - key: nitter.conf
+              path: /src/nitter.conf
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
