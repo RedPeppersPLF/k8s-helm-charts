@@ -40,7 +40,7 @@ securityContext: {}
   # readOnlyRootFilesystem: true
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 8080
 
 resources: {}
