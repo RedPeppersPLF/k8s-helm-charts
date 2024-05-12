@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ include "nitter.fullname" . }}
+  name: storage-{{ include "nitter.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels:
     {{- include "nitter.labels" . | nindent 4 }}
