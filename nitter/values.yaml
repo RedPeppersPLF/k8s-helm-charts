@@ -84,7 +84,7 @@ volumeMounts:
   mountPath: "/opt/nitter/data"
   readOnly: false
 - name: config
-  mountPath: "/src"
+  mountPath: "/src/config"
   readOnly: true
 
 nodeSelector: {}
