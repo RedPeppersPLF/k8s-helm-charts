@@ -7,6 +7,14 @@ metadata:
   labels:
     {{- include "nitter.labels" . | nindent 4 }}
 spec:
+  accessModes:
+  {{- if not (empty .Values.persistence.accessModes) }}
+  {{- range .Values.persistence.accessModes }}
+    - {{ . | quote }}
+  {{- end }}
+  {{- else }}
+    - {{ .Values.persistence.accessMode | quote }}
+  {{- end }}
   storageClassName: {{ .Values.persistence.storageClass | quote }}
   resources:
     requests:
