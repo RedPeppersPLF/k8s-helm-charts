@@ -77,7 +77,6 @@ persistence:
   accessMode: ReadWriteOnce
   size: 4Gi
   storageClass: smb
-  subDir: nitter
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: []

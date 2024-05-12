@@ -49,8 +49,7 @@ spec:
           {{- with .Values.volumeMounts }}
           volumeMounts:
             - name: data
-              mountPath: "/src/{{ .Values.persistence.subDir }}"
-              subPath: {{ .subDir | quote }}
+              mountPath: "/src"
               readOnly: {{ .readOnly | default false | quote }}
             - name: config
               mountPath: "/src/nitter.conf"
