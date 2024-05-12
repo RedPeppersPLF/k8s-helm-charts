@@ -7,7 +7,6 @@ replicaCount: 1
 image:
   repository: ghcr.io/redpeppersplf/nitter
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
 imagePullSecrets:
@@ -86,12 +85,18 @@ volumeMounts:
 - name: config
   mountPath: "/src/config"
   readOnly: true
+- name: guest-accounts
+  mountPath: "/src/guest-accounts"
+  readOnly: true
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
+twitter:
+  fullAuthJson: ""
 
 redis:
   architecture: standalone

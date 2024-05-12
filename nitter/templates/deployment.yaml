@@ -39,6 +39,8 @@ spec:
           env:
             - name: NITTER_CONF_FILE
               value: "./config/nitter.conf"
+            - name: NITTER_ACCOUNTS_FILE
+              value: "./guest-accounts/guest_accounts.jsonl"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -67,6 +69,12 @@ spec:
             items: 
             - key: nitter.conf
               path: nitter.conf
+        - name: twitter-guest-accounts
+          secret:
+            secretName: twitter-guest-accounts
+            items:
+            - key: guest_accounts.jsonl
+              path: guest_accounts.jsonl
 
       {{- with .Values.nodeSelector }}
       nodeSelector:
