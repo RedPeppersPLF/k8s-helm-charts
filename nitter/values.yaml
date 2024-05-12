@@ -85,7 +85,7 @@ volumeMounts:
 - name: config
   mountPath: "/src/config"
   readOnly: true
-- name: guest-accounts
+- name: twitter-guest-accounts
   mountPath: "/src/guest-accounts"
   readOnly: true
 

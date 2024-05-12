@@ -71,7 +71,7 @@ spec:
               path: nitter.conf
         - name: twitter-guest-accounts
           secret:
-            secretName: twitter-guest-accounts
+            secretName: { include "nitter.fullname" . }}-twitter-guest-accounts
             items:
             - key: guest_accounts.jsonl
               path: guest_accounts.jsonl
