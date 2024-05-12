@@ -1234,6 +1234,7 @@ alertmanager:
   enabled: true
 
   persistence:
+    storageClass: smb
     size: 2Gi
 
   podSecurityContext:
