@@ -63,7 +63,7 @@ spec:
             name: {{ include "nitter.fullname" . }}-config-file
             items: 
             - key: nitter.conf
-              path: /src/nitter.conf
+              path: nitter.conf
 
       {{- with .Values.nodeSelector }}
       nodeSelector:
