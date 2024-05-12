@@ -81,7 +81,7 @@ persistence:
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
 - name: data
-  mountPath: "/src"
+  mountPath: "/opt/nitter/data"
   readOnly: false
 
 nodeSelector: {}
