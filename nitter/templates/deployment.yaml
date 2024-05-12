@@ -48,9 +48,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
           volumeMounts:
-            - name: data
-              mountPath: "/src"
-              readOnly: {{ .readOnly | default false | quote }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
       volumes:
         - name: data

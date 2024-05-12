@@ -79,10 +79,10 @@ persistence:
   storageClass: smb
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
+volumeMounts:
+- name: data
+  mountPath: "/src"
+  readOnly: false
 
 nodeSelector: {}
 
