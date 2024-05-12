@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "nitter.fullname" . }}-config-file
+  labels:
+    app.kubernetes.io/name: {{ include "nitter.name" . }}
+    helm.sh/chart: {{ include "nitter.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+data:
+  nitter.conf: |
+    [Server]
+    hostname = "localhost"
+    title = "nitter"
+    address = "0.0.0.0"
+    port = 8080
+    https = false
+    httpMaxConnections = 100
+    staticDir = "./public"
+
+    [Cache]
+    listMinutes = 240
+    rssMinutes = 10
+    redisHost = "nitter-redis-master.svc.cluster"
+    redisPort = 6379
+    redisPassword = "{{ .Values.redis.auth.password }}"
+    redisConnections = 20
+    redisMaxConnections = 30
+
+    [Config]
+    hmacKey = "YE1QWaCrgk2mHiBZ"
+    base64Media = true
+    enableRSS = false
+    enableDebug = false
+    proxy = ""
+    proxyAuth = ""
+    tokenCount = 10
+
+    [Preferences]
+    theme = "Nitter"
+    replaceTwitter = "nitter.net"
+    replaceYouTube = ""
+    replaceReddit = ""
+    proxyVideos = true
+    hlsPlayback = true
+    infiniteScroll = true
+

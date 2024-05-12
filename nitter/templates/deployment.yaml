@@ -52,6 +52,9 @@ spec:
               mountPath: "/src/{{ .Values.persistence.subDir }}"
               subPath: {{ .subDir | quote }}
               readOnly: {{ .readOnly | default false | quote }}
+            - name: config
+              mountPath: "/src/nitter.conf"
+              readOnly: true
             {{- toYaml . | nindent 12 }}
           {{- end }}
       {{- with .Values.volumes }}
@@ -62,6 +65,9 @@ spec:
             claimName: {{ include .Values.persistence.existingClaim }}
         {{- else }}
           emptyDir: {}
+        - name: config
+          configMap:
+            name: {{ include "nitter.fullname" . }}-config-file
         {{- end }}
         {{- toYaml . | nindent 8 }}
       {{- end }}

@@ -93,6 +93,7 @@ affinity: {}
 redis:
   architecture: standalone
   auth:
+    password: empty
     usePasswordFileFromSecret: true
     existingSecret: redis-password-secret
     existingSecretPasswordKey: password
