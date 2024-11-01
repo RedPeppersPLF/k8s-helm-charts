@@ -41,7 +41,7 @@ data:
     replaceTwitter = "nitter.net"
     replaceYouTube = ""
     replaceReddit = ""
-    proxyVideos = true
+    proxyVideos = false
     hlsPlayback = true
     infiniteScroll = true
 
