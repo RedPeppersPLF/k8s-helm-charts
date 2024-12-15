@@ -557,7 +557,7 @@ compactor:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "smb"
+    storageClass: "longhorn-smb"
     ## @param compactor.persistence.accessModes PVC Access modes
     ##
     accessModes:
@@ -2157,7 +2157,7 @@ ingester:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "smb"
+    storageClass: "longhorn-smb"
     ## @param ingester.persistence.subPath The subdirectory of the volume to mount to
     ##
     subPath: ""
@@ -2554,7 +2554,7 @@ querier:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "smb"
+    storageClass: "longhorn-smb"
     ## @param querier.persistence.subPath The subdirectory of the volume to mount to
     ##
     subPath: ""
@@ -3671,7 +3671,7 @@ ruler:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "smb"
+    storageClass: "longhorn-smb"
     ## @param ruler.persistence.subPath The subdirectory of the volume to mount to
     ##
     subPath: ""
