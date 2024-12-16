@@ -1234,7 +1234,7 @@ alertmanager:
   enabled: true
 
   persistence:
-    storageClass: longhorn-smb
+    storageClass: longhorn
     size: 2Gi
 
   podSecurityContext:

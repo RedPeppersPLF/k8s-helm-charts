@@ -75,7 +75,7 @@ persistence:
   enabled: true
   accessMode: ReadWriteOnce
   size: 4Gi
-  storageClass: longhorn-smb
+  storageClass: longhorn
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:

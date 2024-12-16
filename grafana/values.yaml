@@ -598,7 +598,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  storageClass: "longhorn-smb"
+  storageClass: "longhorn"
   annotations: {}
   existingClaim: ""
   accessMode: ReadWriteOnce
