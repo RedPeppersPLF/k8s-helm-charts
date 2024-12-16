@@ -761,7 +761,7 @@ serverFiles:
       - job_name: traefik-metrics	
         static_configs:	
         - targets:	
-          - 100.0.0.134:8082	
+          - 63.0.0.6:8082	
       - job_name: kube-state-metrics	
         static_configs:	
         - targets:	
