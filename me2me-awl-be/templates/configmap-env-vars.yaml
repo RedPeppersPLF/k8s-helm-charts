@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-env-vars
+  name: {{ include "me2me-awl-be.fullname" . }}-env-vars
   labels:
     {{- include "me2me-awl-be.labels" . | nindent 4 }}
 data:
