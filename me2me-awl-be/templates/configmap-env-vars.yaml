@@ -6,17 +6,16 @@ metadata:
   name: {{ .Release.Name }}-env-vars
   labels:
     {{- include "me2me-awl-be.labels" . | nindent 4 }}
-spec:
-  data:
-    # Environment variables for the application
-    # These are just examples, replace with actual environment variables needed by your application
-    BASE_PATH: "/api"
-    ORIGINS_URL: "https://cascade.me2me.fr"
-    EXPIRATION_TIME: "43200"
-    MONGODB_URL: "mongodb://mongodb.mongodb.svc.cluster:27017"
-    MONGODB_DATABASE: "me2me-awl"
-    ISSUER_ID: {{ $issuerUUID }}
-    # Add more environment variables as needed
-  {{- if .Values.extraEnvVars }}
-  {{- toYaml .Values.extraEnvVars | nindent 4 }}
-  {{- end }}
+data:
+  # Environment variables for the application
+  # These are just examples, replace with actual environment variables needed by your application
+  BASE_PATH: "/api"
+  ORIGINS_URL: "https://cascade.me2me.fr"
+  EXPIRATION_TIME: "43200"
+  MONGODB_URL: "mongodb://mongodb.mongodb.svc.cluster:27017"
+  MONGODB_DATABASE: "me2me-awl"
+  ISSUER_ID: {{ $issuerUUID }}
+  # Add more environment variables as needed
+{{- if .Values.extraEnvVars }}
+{{- toYaml .Values.extraEnvVars | nindent 4 }}
+{{- end }}
