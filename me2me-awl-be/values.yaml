@@ -1,0 +1,79 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/redpeppersplf/me2me-awl-be
+  pullPolicy: IfNotPresent
+  tag: "v0.1.0"
+
+imagePullSecrets:
+  - name: ghcr-creds
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+securityContext: {}
+
+service:
+  type: NodePort
+  port: 3000
+
+resources:
+    limits:
+        cpu: 1
+        memory: 512Mi
+    requests:
+        cpu: 256m
+        memory: 256Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+persistence:
+  enabled: false
+
+jwtAuth:
+  enabled: true
+  privateKey:
+    secretName: me2me-awl-be-jwt-private-key
+  publicKey:
+    secretName: me2me-awl-be-jwt-public-key
+
+mongoDB:
+  enabled: true
+  userSecretName: me2me-awl-be-mongo-user
+  passwordSecretName: me2me-awl-be-mongo-password
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
