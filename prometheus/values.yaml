@@ -758,10 +758,15 @@ serverFiles:
       - /etc/config/alerts
 
     scrape_configs:
-      - job_name: traefik-metrics	
+      - job_name: traefik-metrics
         static_configs:	
         - targets:	
-          - 63.0.0.6:8082	
+          - 63.0.0.6:8082
+      - job_name: mongodb
+        scrape_interval: 5s
+        static_configs:
+          - targets:
+              - mongodb-exporter.mongodb.svc.cluster:9216
       - job_name: kube-state-metrics	
         static_configs:	
         - targets:	

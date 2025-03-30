@@ -27,4 +27,9 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: mongodb
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: me2me-awl
