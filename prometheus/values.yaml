@@ -766,7 +766,7 @@ serverFiles:
         scrape_interval: 5s
         static_configs:
           - targets:
-              - mongodb-exporter.mongodb.svc.cluster:9216
+              - mongodb-metrics.mongodb.svc.cluster:9216
       - job_name: kube-state-metrics	
         static_configs:	
         - targets:	
