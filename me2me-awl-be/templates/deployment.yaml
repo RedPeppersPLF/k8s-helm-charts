@@ -63,11 +63,11 @@ spec:
             - name: username
               mountPath: /app
               readOnly: true
-              subPath: username
+              subPath: mongodbuser
             - name: password
               mountPath: /app
               readOnly: true
-              subPath: password
+              subPath: mongodbpassword
             {{- end }}
           {{- end }}
       volumes:
