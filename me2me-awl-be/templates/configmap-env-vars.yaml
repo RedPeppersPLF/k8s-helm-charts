@@ -5,7 +5,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-env-vars
   labels:
-    {{- include "me2me-awl-be.labels" . | nindent 4 }}*
+    {{- include "me2me-awl-be.labels" . | nindent 4 }}
 spec:
   data:
     # Environment variables for the application
