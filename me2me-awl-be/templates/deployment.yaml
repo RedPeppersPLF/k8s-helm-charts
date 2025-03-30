@@ -46,9 +46,10 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
+            {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
+            {{- end }}
             {{- if .Values.jwtAuth.enabled }}
             - name: public-key
               mountPath: /app/public-key.pem
@@ -65,7 +66,6 @@ spec:
               mountPath: /app/mongodbpassword
               subPath: mongodbpassword
             {{- end }}
-          {{- end }}
       volumes:
         - name: data
         {{- if .Values.persistence.enabled }}
