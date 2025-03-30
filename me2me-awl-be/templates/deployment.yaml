@@ -51,18 +51,22 @@ spec:
             {{- toYaml . | nindent 12 }}
             {{- if .Values.jwtAuth.enabled }}
             - name: public-key
-              mountPath: /app/certs
+              mountPath: /app/certs/public-key.pem
+              subPath: public-key.pem
               readOnly: true
             - name: private-key
-              mountPath: /app/certs
+              mountPath: /app/certs/private-key.pem
+              subPath: private-key.pem
               readOnly: true
             {{- end }}
             {{- if .Values.mongoDB.enabled }}
             - name: username
-              mountPath: /app/secrets
+              mountPath: /app/secrets/mongodbuser
+              subPath: mongodbuser
               readOnly: true
             - name: password
-              mountPath: /app/secrets
+              mountPath: /app/secrets/mongodbpassword
+              subPath: mongodbpassword
               readOnly: true
             {{- end }}
           {{- end }}
