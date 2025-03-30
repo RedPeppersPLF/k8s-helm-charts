@@ -51,19 +51,23 @@ spec:
             {{- toYaml . | nindent 12 }}
             {{- if .Values.jwtAuth.enabled }}
             - name: public-key
-              mountPath: /app/public-key.pem
+              mountPath: /app
               readOnly: true
+              subPath: public-key.pem
             - name: private-key
-              mountPath: /app/private-key.pem
+              mountPath: /app
               readOnly: true
+              subPath: private-key.pem
             {{- end }}
             {{- if .Values.mongoDB.enabled }}
             - name: username
-              mountPath: /app/mongodbuser
+              mountPath: /app
               readOnly: true
+              subPath: username
             - name: password
-              mountPath: /app/mongodbpassword
+              mountPath: /app
               readOnly: true
+              subPath: password
             {{- end }}
           {{- end }}
       volumes:
