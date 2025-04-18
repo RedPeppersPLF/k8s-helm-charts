@@ -3,7 +3,6 @@ replicaCount: 1
 image:
   repository: ghcr.io/redpeppersplf/me2me-awl-be
   pullPolicy: IfNotPresent
-  tag: "v0.2.0"
 
 imagePullSecrets:
   - name: ghcr-creds
