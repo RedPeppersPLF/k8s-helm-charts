@@ -44,8 +44,9 @@ spec:
                   name: {{ .Values.redis.auth.existingSecret }}
                   key: {{ .Values.redis.auth.existingSecretPasswordKey }}
           volumeMounts:
-            - name: config
-              mountPath: "/tmp/config"
+          - name: config
+            mountPath: "/tmp/config"
+            readOnly: false
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -87,7 +88,7 @@ spec:
         - name: config
           configMap:
             name: {{ include "nitter.fullname" . }}-config-file
-            items: 
+            items:
             - key: nitter.conf
               path: nitter.conf
         - name: twitter-guest-accounts
