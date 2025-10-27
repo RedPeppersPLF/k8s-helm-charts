@@ -96,9 +96,10 @@ tolerations: []
 affinity: {}
 
 redis:
-  image: redis:8.2.2
-  imagePullPolicy: IfNotPresent
-  imagePullSecrets: []
+  image:
+    repository: redis
+    tag: "8.2.2"
+    pullSecrets: []
   architecture: standalone
   auth:
     usePasswordFileFromSecret: true
