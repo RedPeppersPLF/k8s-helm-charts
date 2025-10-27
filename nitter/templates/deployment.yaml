@@ -36,7 +36,12 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: busybox:latest
           imagePullPolicy: IfNotPresent
-          command: ["sh", "-c", "sed 's/@REDIS_PASSWORD@/'\"$REDIS_PASSWORD\"'/g' /tmp/config/nitter.conf"]
+          command:
+            - sh
+            - -c
+            - |
+              cp /tmp/config/nitter.conf /config/nitter.conf
+              sed 's/@REDIS_PASSWORD@/'\"$REDIS_PASSWORD\"'/g' /config/nitter.conf
           env:
             - name: REDIS_PASSWORD
               valueFrom:
@@ -44,8 +49,11 @@ spec:
                   name: {{ .Values.redis.auth.existingSecret }}
                   key: {{ .Values.redis.auth.existingSecretPasswordKey }}
           volumeMounts:
-          - name: config
+          - name: init-config
             mountPath: "/tmp/config"
+            readOnly: true
+          - name: config
+            mountPath: "/config"
             readOnly: false
       containers:
         - name: {{ .Chart.Name }}
@@ -85,12 +93,14 @@ spec:
         {{- else }}
           emptyDir: {}
         {{- end }}
-        - name: config
+        - name: init-config
           configMap:
             name: {{ include "nitter.fullname" . }}-config-file
             items:
             - key: nitter.conf
               path: nitter.conf
+        - name: config
+          emptyDir: {}
         - name: twitter-guest-accounts
           secret:
             secretName: {{ include "nitter.fullname" . }}-twitter-guest-accounts
