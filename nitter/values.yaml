@@ -9,8 +9,8 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-imagePullSecret:
-  name: ghcr-creds
+imagePullSecrets:
+  - name: ghcr-creds
 nameOverride: ""
 fullnameOverride: ""
 
