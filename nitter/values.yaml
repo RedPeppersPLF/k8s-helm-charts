@@ -97,6 +97,8 @@ affinity: {}
 
 redis:
   image: redis:8.2.2
+  imagePullPolicy: IfNotPresent
+  imagePullSecrets: []
   architecture: standalone
   auth:
     usePasswordFileFromSecret: true
