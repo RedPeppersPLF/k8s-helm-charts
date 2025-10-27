@@ -9,8 +9,8 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-imagePullSecrets:
-  - name: ghcr-creds
+imagePullSecret:
+  name: ghcr-creds
 nameOverride: ""
 fullnameOverride: ""
 
@@ -95,14 +95,9 @@ tolerations: []
 
 affinity: {}
 
-twitter:
-  oauthToken: ""
-  oauthTokenSecret: ""
-
 redis:
   architecture: standalone
   auth:
-    password: empty
     usePasswordFileFromSecret: true
     existingSecret: redis-password-secret
     existingSecretPasswordKey: password

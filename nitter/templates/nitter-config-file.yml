@@ -23,7 +23,7 @@ data:
     rssMinutes = 10
     redisHost = "nitter-redis-master.nitter.svc.cluster"
     redisPort = 6379
-    redisPassword = "{{ .Values.redis.auth.password }}"
+    redisPassword = @REDIS_PASSWORD@
     redisConnections = 20
     redisMaxConnections = 30
 
