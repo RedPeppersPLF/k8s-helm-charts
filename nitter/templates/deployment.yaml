@@ -32,9 +32,11 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: init-conf-file
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: busybox:latest
           imagePullPolicy: IfNotPresent
-          command: ["sh", "-c", "sed -i 's/@REDIS_PASSWORD@/'\"$REDIS_PASSWORD\"'/g' /tmp/config/nitter.conf"]
+          command: ["sh", "-c", "sed 's/@REDIS_PASSWORD@/'\"$REDIS_PASSWORD\"'/g' /tmp/config/nitter.conf"]
           env:
             - name: REDIS_PASSWORD
               valueFrom:
