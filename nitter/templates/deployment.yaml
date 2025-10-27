@@ -34,7 +34,7 @@ spec:
         - name: init-conf-file
           image: busybox:latest
           imagePullPolicy: IfNotPresent
-          command: ["sh", "-c", "sed -i 's/@REDIS_PASSWORD@/'\"$REDIS_PASSWORD\"'/g' /config/nitter.conf"]
+          command: ["sh", "-c", "sed -i 's/@REDIS_PASSWORD@/'\"$REDIS_PASSWORD\"'/g' /tmp/config/nitter.conf"]
           env:
             - name: REDIS_PASSWORD
               valueFrom:
@@ -43,7 +43,7 @@ spec:
                   key: {{ .Values.redis.auth.existingSecretPasswordKey }}
           volumeMounts:
             - name: config
-              mountPath: /config
+              mountPath: "/tmp/config"
       containers:
         - name: {{ .Chart.Name }}
           securityContext:

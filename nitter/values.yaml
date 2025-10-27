@@ -96,6 +96,7 @@ tolerations: []
 affinity: {}
 
 redis:
+  image: redis:8.2.2
   architecture: standalone
   auth:
     usePasswordFileFromSecret: true
