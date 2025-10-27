@@ -4,8 +4,8 @@ image:
   repository: ghcr.io/redpeppersplf/me2me-awl-be
   pullPolicy: IfNotPresent
 
-imagePullSecrets:
-  - name: ghcr-creds
+imagePullSecret:
+  name: ghcr-creds
 nameOverride: ""
 fullnameOverride: ""
 
