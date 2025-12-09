@@ -4,6 +4,7 @@ authentik:
     port: 5432
     user: file:///postgres-creds/username
     password: file:///postgres-creds/password
+  secret_key: file:///authentik-creds/secretKey
 server:
   service:
     nodePortHttp: 33080
@@ -12,7 +13,28 @@ server:
     - name: postgres-creds
       secret:
         secretName: authentik-postgres-credentials
+    - name: authentik-creds
+      secret:
+        secretName: authentik-secret-key
   volumeMounts:
     - name: postgres-creds
       mountPath: /postgres-creds
+      readOnly: true
+    - name: authentik-creds
+      mountPath: /authentik-creds
+      readOnly: true
+worker:
+  volumes:
+    - name: postgres-creds
+      secret:
+        secretName: authentik-postgres-credentials
+    - name: authentik-creds
+      secret:
+        secretName: authentik-secret-key
+  volumeMounts:
+    - name: postgres-creds
+      mountPath: /postgres-creds
+      readOnly: true
+    - name: authentik-creds
+      mountPath: /authentik-creds
       readOnly: true
