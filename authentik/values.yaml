@@ -1,0 +1,18 @@
+authentik:
+  postgresql:
+    host: cnpg-cluster-rw.cnpg.svc.cluster.local
+    port: 5432
+    user: file:///postgres-creds/username
+    password: file:///postgres-creds/password
+server:
+  service:
+    nodePortHttp: 33080
+    nodePortHttps: 33443
+  volumes:
+    - name: postgres-creds
+      secret:
+        secretName: authentik-postgres-credentials
+  volumeMounts:
+    - name: postgres-creds
+      mountPath: /postgres-creds
+      readOnly: true
