@@ -8,8 +8,6 @@ authentik:
 server:
   service:
     type: NodePort
-    nodePortHttp: 33080
-    nodePortHttps: 33443
   volumes:
     - name: postgres-creds
       secret:
