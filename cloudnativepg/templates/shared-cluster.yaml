@@ -11,6 +11,21 @@ spec:
   storage:
     size: 12Gi
 
+  managed:
+    roles:
+      - name: authentik
+        ensure: present
+        login: true
+        superuser: false
+        createdb: false
+        createrole: false
+        inherit: true
+        replication: false
+        bypassrls: false
+        connectionLimit: 50
+        passwordSecret:
+          name: authentik-postgres-credentials
+
   affinity:
     topologyKey: kubernetes.io/hostname
     podAntiAffinityType: preferred
