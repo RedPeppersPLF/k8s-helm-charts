@@ -8,7 +8,4 @@ spec:
     name: shared-postgres-cluster
   name: authentik
   owner: authentik
-  encoding: UTF8
-  localeCollate: en_US.UTF-8
-  localeCType: en_US.UTF-8
   ensure: present

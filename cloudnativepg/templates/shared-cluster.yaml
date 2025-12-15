@@ -26,6 +26,11 @@ spec:
         passwordSecret:
           name: authentik-postgres-credentials
 
+  bootstrap:
+    initdb:
+      localeCollate: en_US.UTF-8
+      localeCType: en_US.UTF-8
+
   affinity:
     topologyKey: kubernetes.io/hostname
     podAntiAffinityType: preferred
