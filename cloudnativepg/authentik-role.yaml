@@ -1,0 +1,20 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Role
+metadata:
+  name: authentik-role
+  namespace: authentik
+spec:
+  cluster:
+    name: shared-postgres-cluster
+  name: authentik
+  ensure: present
+  login: true
+  superuser: false
+  createdb: false
+  createrole: false
+  inherit: true
+  replication: false
+  bypassrls: false
+  connectionLimit: 50
+  passwordSecret:
+    name: authentik-postgres-credentials

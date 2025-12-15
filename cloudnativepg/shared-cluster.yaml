@@ -1,0 +1,38 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: shared-postgres-cluster
+  namespace: cnpg
+spec:
+  instances: 2
+  
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.2
+  
+  storage:
+    size: 12Gi
+
+  affinity:
+    topologyKey: kubernetes.io/hostname
+    podAntiAffinityType: preferred
+  
+  postgresql:
+    parameters:
+      max_connections: "300"
+      shared_buffers: "256MB"
+      effective_cache_size: "1GB"
+      maintenance_work_mem: "64MB"
+      work_mem: "4MB"
+      
+    pg_hba:
+      - host all all all scram-sha-256
+  
+  monitoring:
+    enablePodMonitor: true
+  
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "1"
+    limits:
+      memory: "4Gi"
+      cpu: "2"

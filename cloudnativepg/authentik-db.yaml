@@ -1,0 +1,14 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: authentik-db
+  namespace: authentik
+spec:
+  cluster:
+    name: shared-postgres-cluster
+  name: authentik
+  owner: authentik
+  encoding: UTF8
+  localeCollate: en_US.UTF-8
+  localeCType: en_US.UTF-8
+  ensure: present
