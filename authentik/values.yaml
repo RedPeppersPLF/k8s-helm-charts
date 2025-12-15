@@ -1,6 +1,6 @@
 authentik:
   postgresql:
-    host: cnpg-cluster-rw.cnpg.svc.cluster
+    host: shared-postgres-cluster-rw.cnpg.svc.cluster
     port: 5432
     user: file:///postgres-creds/username
     password: file:///postgres-creds/password
