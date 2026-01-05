@@ -1,0 +1,11 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: grafana-db
+  namespace: cnpg
+spec:
+  cluster:
+    name: shared-postgres-cluster
+  name: grafana
+  owner: grafana
+  ensure: present
