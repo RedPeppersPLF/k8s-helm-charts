@@ -1,10 +1,10 @@
 grafana.ini:
-  [database]
-  type = postgres
-  host = shared-postgres-cluster-rw.cnpg.svc.cluster:5432
-  name = grafana
-  user = grafana
-  password = $__file{/etc/secrets/postgres/password}
+  database:
+    type: postgres
+    host: shared-postgres-cluster-rw.cnpg.svc.cluster:5432
+    name: grafana
+    user: grafana
+    password: $__file{/etc/secrets/postgres/password}
 
 extraSecretMounts:
   - name: postgres-credentials
