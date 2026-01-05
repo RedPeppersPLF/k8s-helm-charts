@@ -10,7 +10,7 @@ extraSecretMounts:
   - name: postgres-credentials
     secretName: grafana-postgres-credentials
     defaultMode: 0440
-    mountPath: /etc/secrets/postgres/password
+    mountPath: /etc/secrets/postgres
     readOnly: true
 
 imageRenderer:
