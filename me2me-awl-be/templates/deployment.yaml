@@ -90,7 +90,7 @@ spec:
         {{- if .Values.mongoDB.enabled }}
         - name: username
           secret:
-            secretName: {{ .Values.mongoDB.sercretName }}
+            secretName: {{ .Values.mongoDB.secretName }}
             key: username
         - name: password
           secret:
