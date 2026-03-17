@@ -80,10 +80,12 @@ spec:
         {{- if .Values.jwtAuth.enabled }}
         - name: public-key
           secret:
-            secretName: {{ .Values.jwtAuth.publicKey.secretName }}
+            secretName: {{ .Values.jwtAuth.keyPair.secretName }}
+            key: public-key
         - name: private-key
           secret:
-            secretName: {{ .Values.jwtAuth.privateKey.secretName }}
+            secretName: {{ .Values.jwtAuth.keyPair.secretName }}
+            key: private-key
         {{- end }}
         {{- if .Values.mongoDB.enabled }}
         - name: username

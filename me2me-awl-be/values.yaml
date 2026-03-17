@@ -58,14 +58,12 @@ persistence:
 
 jwtAuth:
   enabled: true
-  privateKey:
-    secretName: me2me-awl-be-jwt-private-key
-  publicKey:
-    secretName: me2me-awl-be-jwt-public-key
+  keyPair:
+    secretName: me2me-awl-be-jwt-keys
 
 mongoDB:
   enabled: true
-  secretName: mongodb-me2me-awl-user
+  secretName: me2me-awl-be-mongodb-user
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: {}
