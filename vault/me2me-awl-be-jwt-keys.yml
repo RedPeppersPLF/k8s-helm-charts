@@ -11,11 +11,11 @@ spec:
   target:
     name: me2me-awl-be-jwt-keys
   data:
-    - secretKey: username
+    - secretKey: public-key
       remoteRef:
-        key: secrets/mongodb/me2me-awl
-        property: username
-    - secretKey: password
+        key: secrets/me2me-awl/jwt-keys
+        property: public-key
+    - secretKey: private-key
       remoteRef:
-        key: secrets/mongodb/me2me-awl
-        property: password
+        key: secrets/me2me-awl/jwt-keys
+        property: private-key
