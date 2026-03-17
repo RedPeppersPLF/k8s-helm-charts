@@ -1,0 +1,6 @@
+# values/psmdb-operator-values.yaml
+watchNamespace: "mongodb"
+createNamespace: false
+
+crds:
+  enabled: false

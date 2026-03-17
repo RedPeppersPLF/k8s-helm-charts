@@ -1,0 +1,63 @@
+crVersion: "1.22.0"
+
+finalizers:
+  - percona.com/delete-psmdb-pods-in-order
+
+secrets:
+  users: mongodb-system-secrets
+
+users:
+  - name: me2me-awl
+    db: me2me-awl
+    passwordSecretRef:
+      name: mongodb-me2me-awl-user
+      key: password
+    roles:
+      - role: readWrite
+        db: me2me-awl
+      - role: dbAdmin
+        db: me2me-awl
+
+replsets:
+  - name: rs0
+    size: 1
+
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+      limits:
+        cpu: "2"
+        memory: "4Gi"
+
+    volumeSpec:
+      pvc:
+        resources:
+          requests:
+            storage: 10Gi
+
+    affinity:
+      antiAffinityTopologyKey: "none"
+
+    expose:
+      enabled: false
+      exposeType: ClusterIP
+
+sharding:
+  enabled: false
+
+backup:
+  enabled: false
+
+tls:
+  mode: disabled
+
+pmm:
+  enabled: false
+
+unsafeFlags:
+  replsetSize: true
+  tls: true
+  mongosSize: false
+  terminationGracePeriod: false
+  backupIfUnhealthy: false

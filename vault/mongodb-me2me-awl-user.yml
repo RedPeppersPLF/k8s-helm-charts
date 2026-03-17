@@ -1,0 +1,18 @@
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: mongodb-me2me-awl-user
+  namespace: mongodb
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: vault-secret-store
+    kind: ClusterSecretStore
+  target:
+    name: mongodb-me2me-awl-user
+  data:
+    - secretKey: password
+      remoteRef:
+        key: secrets/mongodb/me2me-awl
+        property: password
