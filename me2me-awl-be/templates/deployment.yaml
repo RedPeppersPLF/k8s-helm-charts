@@ -55,19 +55,15 @@ spec:
             {{- end }}
             {{- if .Values.jwtAuth.enabled }}
             - name: public-key
-              mountPath: /app/public-key.pem
-              subPath: public-key.pem
+              mountPath: /app
             - name: private-key
-              mountPath: /app/private-key.pem
-              subPath: private-key.pem
+              mountPath: /app
             {{- end }}
             {{- if .Values.mongoDB.enabled }}
             - name: username
-              mountPath: /app/mongodbuser
-              subPath: mongodbuser
+              mountPath: /app
             - name: password
-              mountPath: /app/mongodbpassword
-              subPath: mongodbpassword
+              mountPath: /app
             {{- end }}
       volumes:
         - name: data
@@ -81,21 +77,29 @@ spec:
         - name: public-key
           secret:
             secretName: {{ .Values.jwtAuth.keyPair.secretName }}
-            key: public-key
+            items:
+              - key: public-key
+                path: public-key.pem
         - name: private-key
           secret:
             secretName: {{ .Values.jwtAuth.keyPair.secretName }}
-            key: private-key
+            items:
+              - key: private-key
+                path: private-key.pem
         {{- end }}
         {{- if .Values.mongoDB.enabled }}
         - name: username
           secret:
             secretName: {{ .Values.mongoDB.secretName }}
-            key: username
+            items:
+              - key: username
+                path: mongodbuser
         - name: password
           secret:
             secretName: {{ .Values.mongoDB.secretName }}
-            key: password
+            items:
+              - key: password
+                path: mongodbpassword
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
