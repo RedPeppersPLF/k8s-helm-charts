@@ -13,9 +13,9 @@ users:
       name: mongodb-me2me-awl-user
       key: password
     roles:
-      - role: readWrite
+      - name: readWrite
         db: me2me-awl
-      - role: dbAdmin
+      - name: dbAdmin
         db: me2me-awl
 
 replsets:
