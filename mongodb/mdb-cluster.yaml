@@ -19,7 +19,7 @@ users:
         db: me2me-awl
 
 replsets:
-  - name: rs0
+  rs0:
     size: 1
 
     resources:
