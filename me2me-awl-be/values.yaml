@@ -65,8 +65,7 @@ jwtAuth:
 
 mongoDB:
   enabled: true
-  userSecretName: me2me-awl-be-mongo-user
-  passwordSecretName: me2me-awl-be-mongo-password
+  secretName: mongodb-me2me-awl-user
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: {}

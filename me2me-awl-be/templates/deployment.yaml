@@ -88,10 +88,12 @@ spec:
         {{- if .Values.mongoDB.enabled }}
         - name: username
           secret:
-            secretName: {{ .Values.mongoDB.userSecretName }}
+            secretName: {{ .Values.mongoDB.sercretName }}
+            key: username
         - name: password
           secret:
-            secretName: {{ .Values.mongoDB.passwordSecretName }}
+            secretName: {{ .Values.mongoDB.secretName }}
+            key: password
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
