@@ -2,7 +2,7 @@ apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: mongodb-me2me-awl-user
-  namespace: mongodb
+  namespace: me2me-awl
 spec:
   refreshInterval: 1h
   secretStoreRef:
@@ -11,6 +11,10 @@ spec:
   target:
     name: mongodb-me2me-awl-user
   data:
+    - secretKey: username
+      remoteRef:
+        key: secrets/mongodb/me2me-awl
+        property: username
     - secretKey: password
       remoteRef:
         key: secrets/mongodb/me2me-awl
