@@ -56,7 +56,7 @@ spec:
             - name: keys
               mountPath: /app
               subPath: keys
-            - name: mongoUser
+            - name: mongouser
               mountPath: /app
               subPath: mongo
       volumes:
@@ -75,7 +75,7 @@ spec:
                 path: public-key.pem
               - key: private-key
                 path: private-key.pem
-        - name: mongoUser
+        - name: mongouser
           secret:
             secretName: {{ .Values.mongoDB.secretName }}
             items:
