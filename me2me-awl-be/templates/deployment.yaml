@@ -55,15 +55,15 @@ spec:
             {{- end }}
             {{- if .Values.jwtAuth.enabled }}
             - name: public-key
-              mountPath: /app/secrets
+              mountPath: /app/public-key.pem
             - name: private-key
-              mountPath: /app/secrets
+              mountPath: /app/private-key.pem
             {{- end }}
             {{- if .Values.mongoDB.enabled }}
             - name: username
-              mountPath: /app/secrets
+              mountPath: /app/mongodbuser
             - name: password
-              mountPath: /app/secrets
+              mountPath: /app/mongodbpassword
             {{- end }}
       volumes:
         - name: data
