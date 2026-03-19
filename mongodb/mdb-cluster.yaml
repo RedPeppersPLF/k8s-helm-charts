@@ -22,6 +22,19 @@ replsets:
   rs0:
     size: 1
 
+    livenessProbe:
+      failureThreshold: 6
+      initialDelaySeconds: 60
+      periodSeconds: 30
+      timeoutSeconds: 30
+
+    readinessProbe:
+      failureThreshold: 10
+      initialDelaySeconds: 60
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 15
+
     resources:
       requests:
         cpu: "500m"
