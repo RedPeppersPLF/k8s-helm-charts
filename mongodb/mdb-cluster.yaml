@@ -3,6 +3,8 @@ crVersion: "1.22.0"
 finalizers:
   - percona.com/delete-psmdb-pods-in-order
 
+clusterServiceDNSSuffix: svc.cluster
+
 secrets:
   users: mongodb-system-secrets
 
