@@ -54,11 +54,9 @@ spec:
             {{- toYaml . | nindent 12 }}
             {{- end }}
             - name: keys
-              mountPath: /app
-              subPath: keys
+              mountPath: /app/keys
             - name: mongouser
-              mountPath: /app
-              subPath: mongo
+              mountPath: /app/mongo
       volumes:
         - name: data
         {{- if .Values.persistence.enabled }}
