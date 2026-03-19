@@ -53,18 +53,12 @@ spec:
             {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
-            {{- if .Values.jwtAuth.enabled }}
-            - name: public-key
-              mountPath: /app/public-key.pem
-            - name: private-key
-              mountPath: /app/private-key.pem
-            {{- end }}
-            {{- if .Values.mongoDB.enabled }}
-            - name: username
-              mountPath: /app/mongodbuser
-            - name: password
-              mountPath: /app/mongodbpassword
-            {{- end }}
+            - name: keys
+              mountPath: /app
+              subPath: keys
+            - name: mongoUser
+              mountPath: /app
+              subPath: mongo
       volumes:
         - name: data
         {{- if .Values.persistence.enabled }}
@@ -73,34 +67,22 @@ spec:
         {{- else }}
           emptyDir: {}
         {{- end }}
-        {{- if .Values.jwtAuth.enabled }}
-        - name: public-key
+        - name: keys
           secret:
             secretName: {{ .Values.jwtAuth.keyPair.secretName }}
             items:
               - key: public-key
                 path: public-key.pem
-        - name: private-key
-          secret:
-            secretName: {{ .Values.jwtAuth.keyPair.secretName }}
-            items:
               - key: private-key
                 path: private-key.pem
-        {{- end }}
-        {{- if .Values.mongoDB.enabled }}
-        - name: username
+        - name: mongoUser
           secret:
             secretName: {{ .Values.mongoDB.secretName }}
             items:
               - key: username
                 path: mongodbuser
-        - name: password
-          secret:
-            secretName: {{ .Values.mongoDB.secretName }}
-            items:
               - key: password
                 path: mongodbpassword
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
