@@ -1,0 +1,29 @@
+server:
+  dataStorage:
+    accessMode: "ReadWriteOnce"
+
+ui:
+  serviceType: "NodePort"
+
+server:
+  ha:
+    config: |
+      cluster_name: vault-integrated-storage
+      storage "raft" {
+        path    = "/vault/data"
+      }
+      listener "tcp" {
+        address     = "[::]:8200"
+        cluster_address = "[::]:8201"
+        tls_disable = true
+      }
+      service_registration "kubernetes" {}
+      telemetry {
+        disable_hostname = true
+        prometheus_retention_time = "12h"
+      }
+    enabled: true
+    replicas: 2
+    raft:
+      enabled: true
+      setNodeId: true
