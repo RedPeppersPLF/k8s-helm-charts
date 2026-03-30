@@ -1,0 +1,21 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: mongodb-gcs-creds
+  namespace: mongodb
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: vault-secret-store
+    kind: ClusterSecretStore
+  target:
+    name: gcs-sa-secret
+  data:
+    - secretKey: GCS_PRIVATE_KEY
+      remoteRef:
+        key: secrets/mongodb/gcs-creds
+        property: credentials.json
+    - secretKey: GCS_CLIENT_EMAIL
+      remoteRef:
+        key: secrets/mongodb/gcs-creds
+        property: email

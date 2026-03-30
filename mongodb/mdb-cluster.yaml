@@ -62,7 +62,12 @@ sharding:
   enabled: false
 
 backup:
-  enabled: false
+  storages:
+    gcs:
+      type: gcs
+      gcs:
+        bucket: ch-rp-mongodb-backups
+        credentialsSecret: gcs-sa-secret
 
 tls:
   mode: disabled
