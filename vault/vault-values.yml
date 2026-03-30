@@ -1,13 +1,13 @@
+ui:
+  enabled: true
+  serviceType: NodePort
+
 server:
   dataStorage:
-    accessMode: "ReadWriteOnce"
-
-ui:
-  serviceType: "NodePort"
-
-server:
+    accessMode: ReadWriteOnce
   ha:
     config: |
+      ui = true
       cluster_name: vault-integrated-storage
       storage "raft" {
         path    = "/vault/data"
