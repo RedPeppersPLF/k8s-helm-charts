@@ -1,0 +1,16 @@
+service:
+  ui:
+    type: NodePort
+    nodePort: 31327
+
+longhornUI:
+  replicas: 1
+
+longhornManager:
+  resources:
+    limits:
+      cpu: 1200m
+      memory: 384Mi
+    requests:
+      cpu: 1100m
+      memory: 256Mi
