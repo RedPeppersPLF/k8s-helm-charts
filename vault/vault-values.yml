@@ -1,6 +1,5 @@
-ui:
-  enabled: true
-  serviceType: NodePort
+injector:
+  enabled: false
 
 server:
   dataStorage:
@@ -27,3 +26,14 @@ server:
     raft:
       enabled: true
       setNodeId: true
+  resources:
+    limits:
+      cpu: 250m
+      memory: 1Gi
+    requests:
+      cpu: 250m
+      memory: 512Mi
+
+ui:
+  enabled: true
+  serviceType: NodePort
