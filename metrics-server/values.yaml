@@ -1,0 +1,7 @@
+containerPort: 10251
+defaultArgs:
+  - --kubelet-certificate-authority=/ca/ca.crt
+  - --kubelet-preferred-address-types=Hostname
+  - --kubelet-use-node-status-port
+  - --metric-resolution=15s
+  - --cert-dir=/tmp
