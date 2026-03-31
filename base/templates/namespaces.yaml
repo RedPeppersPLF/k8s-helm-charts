@@ -7,11 +7,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: predator
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: prometheus
 ---
 apiVersion: v1
@@ -52,4 +47,4 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kite
+  name: maintenant
