@@ -10,12 +10,16 @@ spec:
     kind: ClusterSecretStore
   target:
     name: gcs-sa-secret
+    template:
+      data:
+        GCS_CLIENT_EMAIL: '{{ .gcs_client_email }}'
+        GCS_PRIVATE_KEY: '{{ .gcs_private_key | replace "\\n" "\n" }}'
   data:
-    - secretKey: GCS_PRIVATE_KEY
+    - secretKey: gcs_private_key
       remoteRef:
         key: secrets/mongodb/gcs-creds
         property: private_key
-    - secretKey: GCS_CLIENT_EMAIL
+    - secretKey: gcs_client_email
       remoteRef:
         key: secrets/mongodb/gcs-creds
         property: email
