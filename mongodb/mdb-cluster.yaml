@@ -69,7 +69,8 @@ backup:
         bucket: ch-rp-mongodb-backups
         credentialsSecret: gcs-sa-secret
   tasks:
-    - name: gcs-weekly-backup
+    - enabled: true
+      name: gcs-weekly-backup
       schedule: "0 4 * * 0"
       retention: 
         count: 4
