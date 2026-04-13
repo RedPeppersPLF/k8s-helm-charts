@@ -23,6 +23,33 @@ users:
 replsets:
   rs0:
     size: 1
+    configuration: |
+      systemLog:
+        verbosity: 0
+        component:
+          accessControl: { verbosity: 0 }
+          command: { verbosity: 0 }
+          control: { verbosity: 0 }
+          executor: { verbosity: 0 }
+          geo: { verbosity: 0 }
+          index: { verbosity: 0 }
+          network: { verbosity: 0 }
+          query: { verbosity: 0 }
+          replication: { verbosity: 0 }
+          sharding: { verbosity: 0 }
+          storage: { verbosity: 0 }
+          write: { verbosity: 0 }
+      operationProfiling:
+        mode: off
+      storage:
+        wiredTiger:
+          engineConfig:
+            journalCompressor: snappy
+            cacheSizeGB: 0.5
+          collectionConfig:
+            blockCompressor: snappy
+          indexConfig:
+            prefixCompression: true
 
     livenessProbe:
       failureThreshold: 6
