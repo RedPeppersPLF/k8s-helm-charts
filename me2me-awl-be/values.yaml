@@ -65,6 +65,9 @@ mongoDB:
   enabled: true
   secretName: me2me-awl-be-mongodb-user
 
+tmdbApiKey:
+  secretName: me2me-awl-be-tmdb-api-key
+
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts: {}
 
