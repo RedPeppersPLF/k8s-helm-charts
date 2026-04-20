@@ -39,7 +39,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "me2me-awl-be.fullname" . }}-env-vars
-            - secretKeyRef:
+            - secretRef:
                 name: {{ .Values.tmdbApiKey.secretName }}
                 key: TMDB_API_KEY
           ports:
