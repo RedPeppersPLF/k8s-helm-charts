@@ -41,7 +41,6 @@ spec:
                 name: {{ include "me2me-awl-be.fullname" . }}-env-vars
             - secretRef:
                 name: {{ .Values.tmdbApiKey.secretName }}
-                key: TMDB_API_KEY
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
