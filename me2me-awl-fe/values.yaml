@@ -11,7 +11,7 @@ fullnameOverride: ""
 
 serviceAccount:
   create: true
-  automount: true
+  automount: false
   annotations: {}
   name: ""
 
@@ -23,7 +23,9 @@ podSecurityContext:
   runAsGroup: 1000
   fsGroup: 1000
 
-securityContext: {}
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
 
 service:
   type: NodePort
@@ -31,11 +33,11 @@ service:
 
 resources:
     limits:
-        cpu: 1
-        memory: 512Mi
-    requests:
-        cpu: 256m
+        cpu: 500m
         memory: 256Mi
+    requests:
+        cpu: 120m
+        memory: 128Mi
 
 livenessProbe:
   httpGet:

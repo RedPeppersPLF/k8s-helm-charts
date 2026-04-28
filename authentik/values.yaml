@@ -6,6 +6,13 @@ authentik:
     password: file:///postgres-creds/password
   secret_key: file:///authentik-creds/secretKey
 server:
+  resources:
+    limits:
+      cpu: 200m
+      memory: 2048Mi
+    requests:
+      cpu: 100m
+      memory: 1536Mi
   service:
     type: NodePort
   volumes:
@@ -23,6 +30,13 @@ server:
       mountPath: /authentik-creds
       readOnly: true
 worker:
+  resources:
+    limits:
+      cpu: 200m
+      memory: 2048Mi
+    requests:
+      cpu: 100m
+      memory: 1536Mi
   volumes:
     - name: postgres-creds
       secret:

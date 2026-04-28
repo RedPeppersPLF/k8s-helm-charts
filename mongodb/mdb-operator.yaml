@@ -4,3 +4,11 @@ createNamespace: false
 
 crds:
   enabled: false
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
