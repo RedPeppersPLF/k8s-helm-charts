@@ -1,0 +1,24 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: longhorn-manager-ingress
+  namespace: longhorn
+spec:
+  endpointSelector:
+    matchLabels: { app: longhorn-manager }
+  ingress:
+    - fromEndpoints:
+        - matchLabels: { io.kubernetes.pod.namespace: longhorn }
+    - fromEntities: [kube-apiserver, host, remote-node]
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: longhorn-ui-ingress
+  namespace: longhorn
+spec:
+  endpointSelector:
+    matchLabels: { app: longhorn-ui }
+  ingress:
+    - fromEntities: [host]          # kubectl port-forward arrives as host
