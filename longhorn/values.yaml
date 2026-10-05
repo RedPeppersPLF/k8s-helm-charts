@@ -1,3 +1,10 @@
+persistence:
+  defaultClassReplicaCount: 2
+  dataEngine: v2
+
+defaultSettings:
+  v2DataEngine: true
+
 longhornUI:
   replicas: 1
 
