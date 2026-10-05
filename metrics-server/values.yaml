@@ -1,7 +1,21 @@
 containerPort: 10251
+
 defaultArgs:
-  - --kubelet-preferred-address-types=Hostname
+  - --kubelet-preferred-address-types=InternalIP,Hostname
   - --kubelet-certificate-authority=/ca/ca.crt
   - --kubelet-use-node-status-port
   - --metric-resolution=15s
   - --cert-dir=/tmp
+
+extraVolumes:
+  - name: cluster-ca
+    configMap:
+      name: kube-root-ca.crt
+      items:
+        - key: ca.crt
+          path: ca.crt
+
+extraVolumeMounts:
+  - name: cluster-ca
+    mountPath: /ca
+    readOnly: true
