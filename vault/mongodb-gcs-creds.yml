@@ -17,9 +17,9 @@ spec:
   data:
     - secretKey: gcs_private_key
       remoteRef:
-        key: secrets/mongodb/gcs-creds
+        key: mongodb/gcs-creds
         property: private_key
     - secretKey: gcs_client_email
       remoteRef:
-        key: secrets/mongodb/gcs-creds
+        key: mongodb/gcs-creds
         property: email

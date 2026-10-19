@@ -13,9 +13,9 @@ spec:
   data:
     - secretKey: public-key
       remoteRef:
-        key: secrets/me2me-awl/jwt-keys
+        key: me2me-awl/jwt-keys
         property: public-key
     - secretKey: private-key
       remoteRef:
-        key: secrets/me2me-awl/jwt-keys
+        key: me2me-awl/jwt-keys
         property: private-key

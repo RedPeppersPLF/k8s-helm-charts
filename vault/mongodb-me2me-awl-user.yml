@@ -13,5 +13,5 @@ spec:
   data:
     - secretKey: password
       remoteRef:
-        key: secrets/mongodb/me2me-awl
+        key: mongodb/me2me-awl
         property: password
