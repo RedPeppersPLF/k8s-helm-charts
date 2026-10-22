@@ -10,7 +10,7 @@ data:
   BASE_PATH: "/api"
   ORIGINS_URL: "https://cascade.me2me.fr"
   EXPIRATION_TIME: "43200"
-  MONGODB_URL: "mongodb://mongodb-psmdb-db-rs0.mongodb.svc.cluster:27017"
+  MONGODB_URL: "mongodb://mongodb-psmdb-db-rs0.mongodb.svc.me2me:27017"
   MONGODB_DATABASE: "me2me-awl"
   ISSUER_ID: {{ $issuerUUID }}
 {{- if .Values.extraEnvVars }}
